@@ -630,6 +630,245 @@
                 grid-template-columns: 1fr;
             }
         }
+      
+      .flying-code {
+            position: fixed;
+            color: #00FF00;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            pointer-events: none;
+            z-index: 100;
+            white-space: nowrap;
+            text-shadow: 0 0 10px #00FF00;
+            animation: flyAcross linear infinite;
+        }
+
+        @keyframes flyAcross {
+            0% {
+                transform: translateX(-200px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Flying Binary Code */
+        .binary-stream {
+            position: fixed;
+            color: #00FFFF;
+            font-size: 10px;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 90;
+            animation: binaryFly linear infinite;
+            text-shadow: 0 0 8px #00FFFF;
+        }
+
+        @keyframes binaryFly {
+            0% {
+                transform: translateY(100vh) translateX(-50px);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Flying Security Icons */
+        .security-icon {
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 110;
+            animation: iconFloat ease-in-out infinite;
+            text-shadow: 0 0 15px currentColor;
+        }
+
+        @keyframes iconFloat {
+            0% {
+                transform: translateY(100vh) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1) rotate(360deg);
+            }
+            100% {
+                transform: translateY(-100px) scale(0.5) rotate(540deg);
+                opacity: 0;
+            }
+        }
+
+        /* Flying Alert Messages */
+        .alert-message {
+            position: fixed;
+            background: rgba(255, 60, 60, 0.1);
+            border: 1px solid #FF3C3C;
+            color: #FF3C3C;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 120;
+            animation: alertFly linear infinite;
+            text-shadow: 0 0 10px #FF3C3C;
+            box-shadow: 0 0 20px rgba(255, 60, 60, 0.3);
+        }
+
+        @keyframes alertFly {
+            0% {
+                transform: translateX(100vw) translateY(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(50vw) translateY(-20px);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-200px) translateY(-40px);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Hexagons */
+        .hex-particle {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #8000FF;
+            pointer-events: none;
+            z-index: 80;
+            animation: hexFloat ease-in-out infinite;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(128, 0, 255, 0.1);
+            box-shadow: 0 0 20px rgba(128, 0, 255, 0.3);
+        }
+
+        @keyframes hexFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.2);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Flying Terminal Windows */
+        .mini-terminal {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00FF00;
+            border-radius: 5px;
+            padding: 8px;
+            color: #00FF00;
+            font-size: 10px;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 105;
+            animation: terminalFly linear infinite;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            min-width: 120px;
+        }
+
+        @keyframes terminalFly {
+            0% {
+                transform: translateX(-300px) translateY(0px) rotate(-10deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-50px) rotate(10deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glitch Data Streams */
+        .data-stream {
+            position: fixed;
+            color: #FFFF00;
+            font-size: 8px;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 95;
+            animation: dataGlitch linear infinite;
+            text-shadow: 0 0 5px #FFFF00;
+            white-space: nowrap;
+        }
+
+        @keyframes dataGlitch {
+            0% {
+                transform: translateY(-50px) skewX(0deg);
+                opacity: 0;
+                filter: hue-rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+                filter: hue-rotate(45deg);
+            }
+            25% {
+                transform: translateY(25vh) skewX(5deg);
+                filter: hue-rotate(90deg);
+            }
+            50% {
+                transform: translateY(50vh) skewX(-5deg);
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                transform: translateY(75vh) skewX(3deg);
+                filter: hue-rotate(270deg);
+            }
+            90% {
+                opacity: 1;
+                filter: hue-rotate(315deg);
+            }
+            100% {
+                transform: translateY(100vh) skewX(0deg);
+                opacity: 0;
+                filter: hue-rotate(360deg);
+            }
+        }
+      
     </style>
 </head>
 <body>
@@ -1077,6 +1316,164 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+      
+       const codeSnippets = [
+            'if (threat.detected) { neutralize(); }',
+            'exploit.execute() -> ACCESS_GRANTED',
+            'firewall.status = ACTIVE;',
+            'decrypt(password) -> SUCCESS',
+            'nmap -sS target_ip',
+            'sqlmap --batch --dbs',
+            'metasploit > use exploit',
+            'wireshark.capture(packets)',
+            'hashcat -m 1000 hash.txt',
+            'john --wordlist rockyou.txt',
+            'hydra -L users.txt -P pass.txt ssh://target'
+        ];
+
+        function createFlyingCode() {
+            const code = document.createElement('div');
+            code.className = 'flying-code';
+            code.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+            code.style.top = Math.random() * window.innerHeight + 'px';
+            code.style.animationDuration = (8 + Math.random() * 12) + 's';
+            document.body.appendChild(code);
+            
+            setTimeout(() => code.remove(), 20000);
+        }
+
+        // Binary Streams
+        function createBinaryStream() {
+            const binary = document.createElement('div');
+            binary.className = 'binary-stream';
+            const binaryString = Array.from({length: 20}, () => Math.random() > 0.5 ? '1' : '0').join('');
+            binary.textContent = binaryString;
+            binary.style.left = Math.random() * window.innerWidth + 'px';
+            binary.style.animationDuration = (6 + Math.random() * 8) + 's';
+            document.body.appendChild(binary);
+            
+            setTimeout(() => binary.remove(), 14000);
+        }
+
+        // Security Icons
+        const securityIcons = ['🔒', '🛡️', '🔐', '🔑', '⚠️', '🚨', '🔍', '💀', '⚡', '🎯'];
+        const iconColors = ['#FF3C3C', '#00FF00', '#00FFFF', '#8000FF', '#FFFF00'];
+
+        function createSecurityIcon() {
+            const icon = document.createElement('div');
+            icon.className = 'security-icon';
+            icon.textContent = securityIcons[Math.floor(Math.random() * securityIcons.length)];
+            icon.style.left = Math.random() * window.innerWidth + 'px';
+            icon.style.color = iconColors[Math.floor(Math.random() * iconColors.length)];
+            icon.style.animationDuration = (10 + Math.random() * 15) + 's';
+            document.body.appendChild(icon);
+            
+            setTimeout(() => icon.remove(), 25000);
+        }
+
+        // Alert Messages
+        const alertMessages = [
+            'THREAT DETECTED',
+            'ACCESS DENIED',
+            'INTRUSION ALERT',
+            'FIREWALL BREACH',
+            'MALWARE FOUND',
+            'UNAUTHORIZED ACCESS',
+            'SYSTEM COMPROMISED',
+            'VULNERABILITY FOUND',
+            'ATTACK BLOCKED',
+            'SECURITY BREACH'
+        ];
+
+        function createAlertMessage() {
+            const alert = document.createElement('div');
+            alert.className = 'alert-message';
+            alert.textContent = alertMessages[Math.floor(Math.random() * alertMessages.length)];
+            alert.style.top = Math.random() * window.innerHeight + 'px';
+            alert.style.animationDuration = (12 + Math.random() * 8) + 's';
+            document.body.appendChild(alert);
+            
+            setTimeout(() => alert.remove(), 20000);
+        }
+
+        // Hexagon Particles
+        function createHexParticle() {
+            const hex = document.createElement('div');
+            hex.className = 'hex-particle';
+            hex.style.left = Math.random() * window.innerWidth + 'px';
+            hex.style.animationDuration = (15 + Math.random() * 10) + 's';
+            hex.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(hex);
+            
+            setTimeout(() => hex.remove(), 30000);
+        }
+
+        // Mini Terminals
+        const terminalCommands = [
+            '$ whoami\nroot',
+            '$ ls -la\ndrwxr-xr-x',
+            '$ ps aux\nPID USER',
+            '$ netstat -an\nTCP 443',
+            '$ top\nCPU: 2%',
+            '$ grep -r\nMATCH',
+            '$ sudo su\n#',
+            '$ cat /etc/passwd\nroot:x:0'
+        ];
+
+        function createMiniTerminal() {
+            const terminal = document.createElement('div');
+            terminal.className = 'mini-terminal';
+            terminal.innerHTML = terminalCommands[Math.floor(Math.random() * terminalCommands.length)].replace('\n', '<br>');
+            terminal.style.top = Math.random() * window.innerHeight + 'px';
+            terminal.style.animationDuration = (15 + Math.random() * 10) + 's';
+            document.body.appendChild(terminal);
+            
+            setTimeout(() => terminal.remove(), 25000);
+        }
+
+        // Data Streams
+        const dataTypes = [
+            'HTTP/1.1 200 OK',
+            'TCP SYN > ACK',
+            'SSL HANDSHAKE',
+            'DNS QUERY A',
+            'ICMP ECHO',
+            'FTP LOGIN',
+            'SSH CONNECTION',
+            'HTTPS GET /',
+            'UDP PACKET',
+            'ARP REQUEST'
+        ];
+
+        function createDataStream() {
+            const stream = document.createElement('div');
+            stream.className = 'data-stream';
+            stream.textContent = dataTypes[Math.floor(Math.random() * dataTypes.length)] + ' ' + 
+                                Array.from({length: 15}, () => Math.random().toString(16)[2] || '0').join('');
+            stream.style.left = Math.random() * window.innerWidth + 'px';
+            stream.style.animationDuration = (8 + Math.random() * 6) + 's';
+            document.body.appendChild(stream);
+            
+            setTimeout(() => stream.remove(), 14000);
+        }
+
+        // Start all animations
+        setInterval(createFlyingCode, 3000);
+        setInterval(createBinaryStream, 2500);
+        setInterval(createSecurityIcon, 4000);
+        setInterval(createAlertMessage, 5000);
+        setInterval(createHexParticle, 6000);
+        setInterval(createMiniTerminal, 7000);
+        setInterval(createDataStream, 2000);
+
+        // Initial burst
+        for(let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                createFlyingCode();
+                createBinaryStream();
+                createSecurityIcon();
+            }, i * 1000);
+        }
     </script>
 </body>
   
