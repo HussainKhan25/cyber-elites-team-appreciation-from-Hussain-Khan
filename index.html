@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ CyberSec Appreciation Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Source Code Pro', monospace;
+            background: #0a0a0a;
+            color: #00FF00;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Cybersecurity HUD Background */
+        .cyber-hud {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(circle at 20% 50%, #001a0d 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #0d001a 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, #1a0001 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 100%);
+        }
+
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid #00FF00;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            color: #00FF00;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .nav-status {
+            color: #00FFFF;
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00FF00;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Matrix Background Effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        /* Hero Section with Security Dashboard */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 2rem;
+            position: relative;
+        }
+
+        .security-header {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00FF00;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00FF00, #00FFFF, #8000FF, #FF3C3C);
+            z-index: -1;
+            border-radius: 15px;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px #00FF00;
+            animation: glitchIntense 3s infinite;
+            background: linear-gradient(45deg, #00FF00, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes glitchIntense {
+            0%, 90%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+            10% { transform: translate(-3px, -3px); filter: hue-rotate(90deg); }
+            20% { transform: translate(3px, 3px); filter: hue-rotate(180deg); }
+            30% { transform: translate(-3px, 3px); filter: hue-rotate(270deg); }
+            40% { transform: translate(3px, -3px); filter: hue-rotate(360deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #00FFFF;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px #00FFFF;
+        }
+
+        /* Threat Detection Terminal */
+        .threat-terminal {
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #FF3C3C;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            max-width: 700px;
+            box-shadow: 0 0 40px rgba(255, 60, 60, 0.3);
+            position: relative;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #FF3C3C;
+            font-weight: bold;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #FF3C3C; }
+        .dot.yellow { background: #FFFF00; }
+        .dot.green { background: #00FF00; }
+
+        .typing-text {
+            color: #00FF00;
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #00FF00;
+            animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #00FF00; }
+        }
+
+        /* Security Metrics Dashboard */
+        .security-metrics {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .metrics-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .metrics-header h2 {
+            color: #FF3C3C;
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px #FF3C3C;
+            margin-bottom: 1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #8000FF;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(128, 0, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .metric-card:hover::before {
+            left: 100%;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(128, 0, 255, 0.4);
+            border-color: #00FFFF;
+        }
+
+        .metric-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00FFFF;
+            text-shadow: 0 0 15px #00FFFF;
+        }
+
+        .metric-title {
+            color: #00FFFF;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .metric-description {
+            color: #FFFFFF;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Elite Cyber Team */
+        .cyber-team {
+            padding: 4rem 2rem;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .team-header h2 {
+            color: #00FFFF;
+            font-size: 2.8rem;
+            text-shadow: 0 0 25px #00FFFF;
+            margin-bottom: 1rem;
+        }
+
+        .team-subtitle {
+            color: #8000FF;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hacker-card {
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #00FF00;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .hacker-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(0, 255, 255, 0.1) 50%, transparent 51%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .hacker-card:hover::after {
+            transform: translateX(100%);
+        }
+
+        .hacker-card:hover {
+            border-color: #FF3C3C;
+            transform: scale(1.05) rotateX(5deg);
+            box-shadow: 0 20px 50px rgba(255, 60, 60, 0.3);
+        }
+
+        .hacker-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hacker-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00FF00, #00FFFF, #8000FF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.8rem;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .hacker-info h3 {
+            color: #00FF00;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-clearance {
+            background: rgba(255, 60, 60, 0.2);
+            border: 1px solid #FF3C3C;
+            color: #FF3C3C;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .specialization {
+            background: rgba(128, 0, 255, 0.2);
+            border: 1px solid #8000FF;
+            color: #8000FF;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .hack-command {
+            background: rgba(0, 0, 0, 0.9);
+            border-left: 4px solid #00FFFF;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #00FFFF;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Threat Intelligence Center */
+        .threat-intel {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .intel-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .intel-header h2 {
+            color: #8000FF;
+            font-size: 2.8rem;
+            text-shadow: 0 0 25px #8000FF;
+            margin-bottom: 1rem;
+        }
+
+        .intel-dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #8000FF;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 0 50px rgba(128, 0, 255, 0.3);
+        }
+
+        .intel-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00FFFF;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #00FF00;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #00FFFF;
+            font-size: 0.9rem;
+        }
+
+        .threat-log {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00FF00;
+            border-radius: 10px;
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            color: #00FF00;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-left: 3px solid #00FFFF;
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* Command Center Message */
+        .command-center {
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .command-terminal {
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #FF3C3C;
+            border-radius: 15px;
+            padding: 2.5rem;
+            max-width: 900px;
+            box-shadow: 0 0 60px rgba(255, 60, 60, 0.4);
+            position: relative;
+        }
+
+        .command-header {
+            color: #FF3C3C;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .command-text {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .command-signature {
+            color: #00FFFF;
+            margin-top: 2rem;
+            font-style: italic;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Security Footer */
+        .security-footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 2px solid #00FF00;
+        }
+
+        .footer-terminal {
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #00FFFF;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .footer-text {
+            color: #00FFFF;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Advanced Animations */
+        .cyber-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #00FFFF;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: particle-float 6s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .intel-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intel-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cybersecurity HUD Background -->
+    <div class="cyber-hud"></div>
+    <div class="cyber-grid"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-logo">🛡️ CYBER-SEC APPRECIATION PORTAL</div>
+            <div class="nav-status">
+                <span class="status-indicator"></span>
+                SECURE CONNECTION | THREAT LEVEL: MINIMAL
+            </div>
+        </div>
+    </nav>
+
+    <!-- Matrix Background -->
+    <canvas class="matrix-rain" id="matrixCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="security-header">
+            <h1>🛡️ CYBER ELITES CLUB WARRIORS</h1>
+            <p class="hero-subtitle">MISSION ACCOMPLISHED • THREATS NEUTRALIZED • SECURITY ENHANCED</p>
+        </div>
+        
+        <div class="threat-terminal">
+            <div class="terminal-header">
+                🔴 THREAT DETECTION SYSTEM
+                <div class="terminal-dots">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+            </div>
+            <div class="typing-text" id="typingText"></div>
+        </div>
+    </section>
+
+    <!-- Security Metrics Dashboard -->
+    <section class="security-metrics">
+        <div class="metrics-header">
+            <h2>🔒 SECURITY OPERATIONS CENTER</h2>
+            <p style="color: #00FFFF; font-size: 1.1rem;">Real-time cybersecurity capabilities assessment</p>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">🚩</div>
+                <div class="metric-title">CTF CHAMPIONS</div>
+                <div class="metric-description">Masters of competitive hacking challenges, puzzle-solving, and flag capturing across multiple cybersecurity domains.</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🐛</div>
+                <div class="metric-title">VULNERABILITY HUNTERS</div>
+                <div class="metric-description">Elite researchers who identify critical security flaws and protect systems through responsible disclosure.</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">⚔️</div>
+                <div class="metric-title">PENETRATION TESTERS</div>
+                <div class="metric-description">Advanced security assessors who simulate real-world attacks to strengthen organizational defenses.</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🧠</div>
+                <div class="metric-title">SECURITY MENTORS</div>
+                <div class="metric-description">Knowledge guardians who share expertise and guide the next generation of cybersecurity professionals.</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🔍</div>
+                <div class="metric-title">THREAT ANALYSTS</div>
+                <div class="metric-description">Intelligence specialists who analyze attack patterns and develop countermeasures against emerging threats.</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🛡️</div>
+                <div class="metric-title">DEFENSE ARCHITECTS</div>
+                <div class="metric-description">Strategic defenders who design and implement comprehensive security frameworks and protocols.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Cyber Team -->
+    <section class="cyber-team">
+        <div class="team-header">
+            <h2>🧑‍💻 CYBER ELITES OPERATIVES</h2>
+            <p class="team-subtitle">Classified Personnel • Security Clearance: MAXIMUM</p>
+        </div>
+        <div class="team-grid">
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">NJ</div>
+                    <div class="hacker-info">
+                        <h3>root@noman.jamalaluddin</h3>
+                        <div class="security-clearance">ALPHA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">exploit_development()</div>
+                <div class="hack-command">
+                    $ sudo ./noman_exploit.sh --target="all_vulnerabilities" --success=100%<br>
+                    # Noman's advanced exploitation techniques are legendary! 🔥
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">AM</div>
+                    <div class="hacker-info">
+                        <h3>root@abdul.muqeeth</h3>
+                        <div class="security-clearance">BETA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">network_forensics()</div>
+                <div class="hack-command">
+                    $ wireshark -i all | grep -E "malicious|suspicious" | wc -l<br>
+                    # Abdul Muqeeth caught every hidden threat in the network! 🕵️
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">AS</div>
+                    <div class="hacker-info">
+                        <h3>root@abdul.sami</h3>
+                        <div class="security-clearance">GAMMA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">reverse_engineering()</div>
+                <div class="hack-command">
+                    $ gdb ./malware --batch --ex="disas main" --ex="info registers"<br>
+                    # Abdul Sami reverse-engineered the impossible! 🔍
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">NM</div>
+                    <div class="hacker-info">
+                        <h3>root@nashwan.mohiuddin</h3>
+                        <div class="security-clearance">DELTA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">cryptography_master()</div>
+                <div class="hack-command">
+                    $ openssl rsa -decrypt -in challenge.enc -out decrypted.txt<br>
+                    # Nashwan cracked encryption algorithms like a cipher god! 🔐
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">VA</div>
+                    <div class="hacker-info">
+                        <h3>root@vamshi.redteam</h3>
+                        <div class="security-clearance">EPSILON-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">red_team_ops()</div>
+                <div class="hack-command">
+                    $ msfconsole -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp"<br>
+                    # Vamshi's red team operations were flawless! ⚡
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">VI</div>
+                    <div class="hacker-info">
+                        <h3>root@vishnu.blueteam</h3>
+                        <div class="security-clearance">ZETA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">incident_response()</div>
+                <div class="hack-command">
+                    $ sudo iptables -A INPUT -s malicious_ip -j DROP && echo "Threat blocked!"<br>
+                    # Vishnu's blue team defense was impenetrable! 🛡️
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">IR</div>
+                    <div class="hacker-info">
+                        <h3>root@ihsan.ahmed.rizwan</h3>
+                        <div class="security-clearance">ETA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">osint_specialist()</div>
+                <div class="hack-command">
+                    $ curl -s "https://api.shodan.io/search" | jq '.matches[] | .ip_str'<br>
+                    # Ihsan's OSINT skills uncovered the hidden web! 🌐
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">AR</div>
+                    <div class="hacker-info">
+                        <h3>root@abdul.raqeeb</h3>
+                        <div class="security-clearance">THETA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">malware_analysis()</div>
+                <div class="hack-command">
+                    $ strings suspicious.exe | grep -E "(password|key|secret)" | head -10<br>
+                    # Abdul Raqeeb dissected malware like a digital surgeon! 🔬
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">SI</div>
+                    <div class="hacker-info">
+                        <h3>root@saniya.inayath</h3>
+                        <div class="security-clearance">IOTA-1 CLEARANCE</div>
+                    </div>
+                  
+                  </div>
+                <div class="specialization">web_app_security()</div>
+                <div class="hack-command">
+                    $ sqlmap -u "http://target.com/login.php" --dbs --batch<br>
+                    # Saniya's web application security testing was masterful! 💻
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">TF</div>
+                    <div class="hacker-info">
+                        <h3>root@tanveer.fatima</h3>
+                        <div class="security-clearance">KAPPA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">digital_forensics()</div>
+                <div class="hack-command">
+                    $ volatility -f memory.dump --profile=Win10x64 pslist | grep -i suspicious<br>
+                    # Tanveer's forensic investigations uncovered digital evidence! 📊
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">MR</div>
+                    <div class="hacker-info">
+                        <h3>root@mariya.cyber</h3>
+                        <div class="security-clearance">LAMBDA-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">security_automation()</div>
+                <div class="hack-command">
+                    $ python3 automate_security.py --scan-all --fix-vulnerabilities<br>
+                    # Mariya automated security like a true cyber architect! 🤖
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">FR</div>
+                    <div class="hacker-info">
+                        <h3>root@fareesa.secure</h3>
+                        <div class="security-clearance">MU-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">threat_hunting()</div>
+                <div class="hack-command">
+                    $ grep -r "IOC\|suspicious" /var/log/* | awk '{print $1}' | sort -u<br>
+                    # Fareesa hunted threats with surgical precision! 🎯
+                </div>
+            </div>
+
+            <div class="hacker-card">
+                <div class="hacker-header">
+                    <div class="hacker-avatar">AE</div>
+                    <div class="hacker-info">
+                        <h3>root@aesha.defender</h3>
+                        <div class="security-clearance">NU-1 CLEARANCE</div>
+                    </div>
+                </div>
+                <div class="specialization">cloud_security()</div>
+                <div class="hack-command">
+                    $ aws iam list-policies --scope Local | jq '.Policies[] | select(.PolicyName | contains("Admin"))'<br>
+                    # Aesha secured cloud infrastructure like a guardian angel! ☁️
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Intelligence Center -->
+    <section class="threat-intel">
+        <div class="intel-header">
+            <h2>🔍 THREAT INTELLIGENCE CENTER</h2>
+            <p style="color: #8000FF; font-size: 1.1rem;">Advanced threat monitoring and analysis</p>
+        </div>
+        <div class="intel-dashboard">
+            <div class="intel-stats">
+                <div class="stat-item">
+                    <span class="stat-number">9</span>
+                    <span class="stat-label">ACTIVE OPERATIVES</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">SUCCESS RATE</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">THREATS NEUTRALIZED</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">MONITORING</span>
+                </div>
+            </div>
+            <div class="threat-log">
+                <div class="log-entry">[2025-07-24 14:30:15] SYSTEM: All operatives performing at peak efficiency</div>
+                <div class="log-entry">[2025-07-24 14:29:42] SUCCESS: Advanced persistent threat eliminated</div>
+                <div class="log-entry">[2025-07-24 14:28:33] INFO: Network perimeter secured by blue team</div>
+                <div class="log-entry">[2025-07-24 14:27:21] ALERT: Red team simulation completed successfully</div>
+                <div class="log-entry">[2025-07-24 14:26:08] SUCCESS: Zero-day vulnerability patched</div>
+                <div class="log-entry">[2025-07-24 14:25:55] INFO: Cryptographic keys rotated successfully</div>
+                <div class="log-entry">[2025-07-24 14:24:42] SUCCESS: Malware sample analyzed and contained</div>
+                <div class="log-entry">[2025-07-24 14:23:30] INFO: OSINT reconnaissance mission completed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Command Center Message -->
+    <section class="command-center">
+        <div class="command-terminal">
+            <div class="command-header">🚨 HIGH COMMAND TRANSMISSION 🚨</div>
+            <div class="command-text">
+                These elite cyber warriors have demonstrated exceptional skill, dedication, and mastery in the art of cybersecurity. Their contributions to digital defense, ethical hacking, and security research have been nothing short of extraordinary. Each operative brings unique expertise that strengthens our collective cyber resilience.
+                <br><br>
+                <strong>MISSION STATUS: ACCOMPLISHED</strong><br>
+                <strong>TEAM PERFORMANCE: EXCEPTIONAL</strong><br>
+                <strong>SECURITY POSTURE: MAXIMUM</strong>
+            </div>
+            <div class="command-signature">
+                - Cyber Command Authority<br>
+                Classification: FOR OFFICIAL USE ONLY
+            </div>
+        </div>
+    </section>
+
+  <!-- Security Footer -->
+<footer style="padding: 3rem 2rem; text-align: center; background: rgba(0, 0, 0, 0.95); border-top: 2px solid #00FF00;">
+   <div style="background: rgba(0, 0, 0, 0.95); border: 2px solid #00FFFF; border-radius: 10px; padding: 2rem; max-width: 700px; margin: 0 auto; box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);">
+       <div style="color: #00FFFF; font-size: 1rem; line-height: 1.6; font-family: 'Fira Code', 'Source Code Pro', monospace;">
+           🔐 <strong>SECURE TRANSMISSION COMPLETE</strong> 🔐<br>
+           This appreciation portal is dedicated to recognizing the outstanding contributions of our cybersecurity professionals.<br>
+           <em>Remember: With great power comes great responsibility.</em><br><br>
+           <span style="color: #00FF00;">Connection Status: ENCRYPTED & SECURE</span><br><br>
+           <div style="border-top: 1px solid #8000FF; margin: 1.5rem 0; padding-top: 1.5rem;">
+               <span style="color: #8000FF; font-size: 0.9rem;">
+                   🌐 Website built by <strong style="color: #00FFFF;">Mohammed Hussain Abid Khan</strong><br>
+                   <span style="color: #00FF00;">Cyber Elites Member 2024-25</span>
+               </span>
+           </div>
+       </div>
+   </div>
+</footer>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]|;:,.<>?';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00FF00';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        // Typing Animation
+        const messages = [
+            "SCANNING FOR THREATS... NO MALICIOUS ACTIVITY DETECTED",
+            "FIREWALL STATUS: ACTIVE | INTRUSION DETECTION: ENABLED",
+            "ALL SYSTEMS SECURE | CYBER TEAM STANDING BY",
+            "VULNERABILITY ASSESSMENT COMPLETE | ZERO CRITICAL ISSUES",
+            "NETWORK PERIMETER SECURED | THREAT LEVEL: MINIMAL"
+        ];
+
+        let messageIndex = 0;
+        let charIndex = 0;
+        const typingElement = document.getElementById('typingText');
+
+        function typeMessage() {
+            if (charIndex < messages[messageIndex].length) {
+                typingElement.textContent += messages[messageIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeMessage, 50);
+            } else {
+                setTimeout(() => {
+                    typingElement.textContent = '';
+                    charIndex = 0;
+                    messageIndex = (messageIndex + 1) % messages.length;
+                    typeMessage();
+                }, 2000);
+            }
+        }
+
+        typeMessage();
+
+        // Particle Effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'cyber-particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.animationDuration = (3 + Math.random() * 6) + 's';
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        setInterval(createParticle, 2000);
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+  
+</html>
